@@ -20,5 +20,14 @@ services:
       - db
     restart: always
 
+  exporter:
+    build: ./exporter
+    container_name: glam_exporter
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "8000:8000"
+
 volumes:
   postgres_data:
