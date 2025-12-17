@@ -39,6 +39,16 @@ services:
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
+  grafana:
+    image: grafana/grafana:latest
+    container_name: glam_grafana
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
 
 volumes:
   postgres_data:
+  grafana_data:
